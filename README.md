@@ -8,14 +8,14 @@ Allow addons of items, blocks, entities
 
 ## Create Custom Items
 
-> A criação de novos items é feitada da maneira mais simples, você deve criar uma pasta com o nome do seu conjunto de item na pasta:
+> Creating new items is done in a simple way, you must create a folder with the name of your item set in the folder:
 
 
 ![tree](https://user-images.githubusercontent.com/35070032/154786116-ae476b7b-c86f-41e4-a2e0-089dd5015ebf.png)
 
-> Dentro da sua pasta 'nome_do_conjunto' você deve criar um arquivo items.yml
-> A apartir dai, todas as coisas que seu item precisa (Imagem, modelos e outros) devem ficar nessa mesma pasta que esta seu items.yml
-> Dentro do arquivo items.yml você definirá os components de seus itens seguindo o modelo padrão:
+> Inside your 'conjunt_name' folder you should create an items.yml file
+> From there, all the things that your item needs (Image, templates and others) should be in the same folder as your items.yml
+> Inside the items.yml file you will define the components of your items following the default template:
  
  ```
  * name: 
@@ -27,39 +27,38 @@ Allow addons of items, blocks, entities
 ```
 
 ## name
-Nome padrão do seu item (Pode ser qualquer um)
+Default name of your item (can be any)
 ## id
-Id customizado para seu item (qualquer numero de id que ainda não exista)
+Custom id for your item (any id number that doesn't already exist)
 ## meta
-Meta para seu item (pode ser 0)
+meta for your item (can be 0)
 ## namespace
-Assinatura do seu item (qualquer nome que não seja 'minecraft', 'minecon') + apelido do seu item
-exemplo: heydeniiis:emerald_armor
+Signature of your item (any name that is not 'minecraft', 'minecon') + nickname of your item
+example: "oheydeniiis:emerald_armor"
 ## texture
-Nome da imagem .png (deve estar dentro da sua pasta 'Nome_do_conjunto'), isso vai ser o icone do seu item
+Name of the .png image (must be inside your 'conjunt_name' folder), this will be your item's icon
 ## category
-Categoria do seu item, de acordo com a categoria do item ele pode ganhar mais components para ser definido, você pode ler sobre os components aqui. 
+Category of your item, according to the category of the item it can get more components to be defined, you can read about components here.
 
 ## craft
-Você pode definir qual será o craft desse item usando essa opção
+You can define the craft of this item using this option
 
-Os crafts podem ser definidos em Simples (2x2) ou complexos (3x3)
+Crafts can be defined as Simple (2x2) or Complex (3x3)
 
-
-as categorias pre definidas são:
+the pre-defined categories are:
 ### sword
-Categoria de espadas<br/>
-Components adicionais:
+Sword category<br/>
+Additional components:
 ```
-* attack_damage: 
+* attack_damage:
 * hand_equipped:
 * max_durability
 ```
 ### armor
-Categoria de armaduras<br/>
-Componentes adicionais:
+Armor category<br/>
+Additional components:
 ```
-* max_durability: 
+* max_durability:
 * defender_points:
 * armor_slot:
 * armor_type:
@@ -68,23 +67,23 @@ Componentes adicionais:
 * protection
 ```
 ### tool
-Ferramentas como:
+Tools like:
 ```
-* Picareta
-* Machado
-* Pá
-* Enxada
-* Tesoura
+* Pickaxe
+* Axe
+* Shovel
+* Hoe
+* Scissors
 ```
-Componentes adicionais:
+Additional components:
 ```
 * tool_name
 * tool_type
 * mining_speed
 ```
 ### food
-Todas as comidas em geral <br/>
-Componentes adicionais:
+All food in general <br/>
+Additional components:
 ```
 * use_duration
 * eat_saturation
@@ -93,8 +92,8 @@ Componentes adicionais:
 * residue: (id: meta:)
 ```
 ### normal
-Todos os outros item como minerios<br/>
-Componentes adicionais:
+All other items as ores,eggs... <br/>
+Additional components:
 ```
 action_type: (spawnable, command
 action_data: (ex: minecraft:creeper, /give {player} 1)
@@ -102,7 +101,8 @@ action_infinite: (true, false)
 ```
 <br/><br/>
 
-Veja alguns exemplos dessas categorias prontas:
+See examples of ready-made categories:
+
 ### sword
 ```
   name: my sword
@@ -163,8 +163,8 @@ Veja alguns exemplos dessas categorias prontas:
   action_data: "minecraft:zombie"
 ```
 <br/>
-Você encontrará exemplos funcionais dentro da pasta 'Examples'.<br/>
-Para pegar os itens use:<br/><br/>
+You will find working examples inside the 'Examples' folder.<br/>
+To get the items use:<br/><br/>
 
 * /give [player] [id]
 
@@ -174,232 +174,116 @@ ou
 * /agive [player] list [#all|list_path]
  
 
-# Todos os compoenentes dos items
-Aqui você encontra todas os componentes dos items com uma breve explicação:<br/>
+# All components of the items
+Here you will find all the components of the items with a brief explanation:<br/>
 
-## 'name:'
-* `TIPO: obrigatorio (qualquer nome)`
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: Todas`
-* `EXPLICAÇÃO: Nome padrão do items`
-## 'id:'
-* `TIPO: obrigatorio (apenas numeros)`
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Id unico do item`
-## 'meta:'
-* `TIPO: obrigatorio (apenas numeros`
-* `PADRÃO: 0`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Meta para itens complexos`
-## 'namepsace:'
-* `TIPO: obrigatorio`
-* `EXEMPLO: custom:my_item`
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Identificador do item`
-## 'texture:'
-* `TIPO: obrigatorio`
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Nome da textura do item presente na pasta do item`     
-## 'max_stack:'
-* `TIPO: obrigatorio (apenas numeros`
-* `PADRÃO: 1 ou 64`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Empilhamento maximo dos itens`
-## 'creative_inventory:'
-* `TIPO: opicional (true ou false)`
-* `PADRÃO: false`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Adicionar item ao inventario criativo` 
-## 'max_durability:'
-* `TIPO: opicional (apenas numeros)`
-* `PADRÃO: 100`
-* `CATEGORIAS USAVÉIS: armor,sword,tool`
-* `EXPLICAÇÃO: Durabilidade maxima do item` 
-## 'attack_damage:'
-* `TIPO: opicional (apenas numeros)`
-* `PADRÃO: 9`
-* `CATEGORIAS USAVÉIS: sword`
-* `EXPLICAÇÃO: dano de ataque base da espada`  
-## 'hand_equipped:'
-* `TIPO: opicional (true ou false`
-* `PADRÃO: false`
-* `CATEGORIAS USAVÉIS: todas`
-* `EXPLICAÇÃO: Faz o item ficar na mão equipado como uma espada` 
-## 'defender_points:'
-* `TIPO: opicional (apenas numeros)`
-* `PADRÃO: 10`
-* `CATEGORIAS USAVÉIS: armor`
-* `EXPLICAÇÃO: pontos de defesa da armadura`
-## 'armor_slot:'
-* `TIPO: obrigatorio (tipos pre definidos)`
-* `TIOPS: "helmet", "chestplate", "leggings", "boots"`
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: armor`
-* `EXPLICAÇÃO: Slot da armadura a ser equipado`   
-## 'armor_type:'
-* `TIPO: opcional (tipos pre definidos)`
-* `TIOPS: "gold", "leather", "chain", "iron", "diamond", "netherite", "elytra", "turtle"`
-* `PADRÃO: diamond`
-* `CATEGORIAS USAVÉIS: armor`
-* `EXPLICAÇÃO: Tipo da textura da armadura` 
-## 'tool_name:'
-* `TIPO: obrigatorio (tipos pre definidos)`
-* `TIOPS: "shovel", "pickaxe", "axe", "shears", "hoe"`
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: tool`
-* `EXPLICAÇÃO: tipo do item`  
-## 'tool_type:'
-* `TIPO: obrigatorio (tipos pre definidos)`
-* `TIOPS: "wooden", "gold", "stone", "iron", "diamond"`
-* `PADRÃO: diamond`
-* `CATEGORIAS USAVÉIS: tool`
-* `EXPLICAÇÃO: tipo da textura do item` 
-## 'creative_eat:'
-* `TIPO: opcional (true e false)`
-* `PADRÃO: true`
-* `CATEGORIAS USAVÉIS: food`
-* `EXPLICAÇÃO: Comer o item no creativo`  
-## 'eat_nutrition:'
-* `TIPO: obrigatorio (apenas numeros)`
-* `PADRÃO: 1`
-* `CATEGORIAS USAVÉIS: food`
-* `EXPLICAÇÃO: Nutrição ao comer o item` 
-## 'eat_saturation:'
-* `TIPO: obrigatorio (apenas numeros)`
-* `PADRÃO: 1`
-* `CATEGORIAS USAVÉIS: food`
-* `EXPLICAÇÃO: Saturação ao comer o item`  
-## 'use_duration:'
-* `TIPO: obrigatorio (apenas numeros)`
-* `PADRÃO: 1`
-* `CATEGORIAS USAVÉIS: food`
-* `EXPLICAÇÃO: tempo para comer o item` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: ` 
-## ':'
-* `TIPO: `
-* `PADRÃO: sem padrão definido`
-* `CATEGORIAS USAVÉIS: `
-* `EXPLICAÇÃO: `  
+(The translation ended up changing unexpected things, so the typos will soon be corrected)
 
+## `name:`
+* `TYPE: required (any name)`
+* `DEFAULT: no pattern defined`
+* `USABLE CATEGORIES: All`
+* `EXPLANATION: Default name of items`
+## `id:'
+* `TYPE: Required (numbers only)`
+* `DEFAULT: no pattern defined` 
+* `USABLE CATEGORIES: All` 
+* `EXPLANATION: Unique item id` 
+## `meta:'
+* `TYPE: Required (numbers only)`
+* `DEFAULT: 0`
+* `USABLE CATEGORIES: All`
+* `EXPLANATION: Goal for complex items`
+## `namepsace:'
+* `TYPE: required` *
+* `EXAMPLE: custom:my_item`
+* `DEFAULT: no pattern defined`
+* `USABLE CATEGORIES: All` *
+* `EXPLANATION: Item identifier`
+## `texture:'
+* `TYPE: required` *
+* `PATTER: no pattern defined`
+* `USABLE CATEGORIES: All`
+* `EXPLANATION: Name of the item texture present in the item folder`
+##  max_stack:''
+* `TYPE: Required (numbers only)`
+* `DEFAULT: 1 or 64`
+* `USABLE CATEGORIES: All`
+* `EXPLANATION: Maximum stacking of items``
+## `creative_inventory:'
+* `TYPE: optional (true or false)`
+* `DEFAULT: false``
+* `USABLE CATEGORIES: All`
+* `EXPLANATION: Add item to creative inventory`
+##  max_durability:''
+* `TYPE: optional (numbers only)`
+* `DEFAULT: 100``
+* `USABLE CATEGORIES: armor,sword,tool`
+* `EXPLANATION: maximum durability of item``
 
+## `attack_damage:'
+* `TYPE: optional (numbers only)`
+* `DEFAULT: 9`
+* `USABLE CATEGORIES: sword`
+* `EXPLANATION: sword base attack damage`
+## `hand_equipped:'
+* `TYPE: optional (true or false`)
+* `DEFAULT: false`
+* `USABLE CATEGORIES: all``
+* `EXPLANATION: Makes the item stay in the hand equipped like a sword`
+## `defender_points:'
+* `TYPE: optional (numbers only)`
+* `DEFAULT: 10`
+* `USABLE CATEGORIES: armor`
+* `EXPLANATION: points`
+* `EXPLANATION: armor defense points`
+## ``armor_slot:''
+* `TYPE: mandatory (pre-defined types)`
+* `TYPES: helmet, chestplate, leggings, boots`
+* ` `PATtern: no defaults defined`
+* `USABLE CATEGORIES: armor` 
+* `EXPLANATION: Slot of armor to be equipped`
+## `armor_type:'
+* `TYPE: optional (pre-defined types)`
+* `TYPES: gold'', leather'', chain'', iron'', diamond'', netherite'', elytra, turtle`
+* `DEFAULT: diamond`
+* `USABLE CATEGORIES: armor``
+* `EXPLANATION: Armor Texture Type`
+## `tool_name:'
+* `TYPE: must (pre-defined types)`
+* `TYPES: "shovel", "pickaxe", "axe", "shears", "hoe"`
+* `DEFAULT: no default `
+* `USABLE CATEGORIES: tool`
+* `EXPLANATION: item type`
+## `tool_type:'
+* `TYPE: mandatory (pre-defined types)`
+* `TYPES: "wooden", "gold", "stone", "iron", "diamond"`
+* ` `DEFAULT: diamond``
+* `USABLE CATEGORIES: tool`
+* `EXPLANATION: item texture type`
+## `creative_eat:'
+* `TYPE: optional (true and false)`
+* `DEFAULT: true``
+* `USABLE CATEGORIES: food`
+* `EXPLANATION: eat the item in creative`
+## eat_nutrition:''
+* `TYPE: required (numbers only)`
+* `DEFAULT: 1`
+* `USABLE CATEGORIES: food`
+* `EXPLANATION: Nutrition when eating the item`
+## eat_saturation:''
+* `TYPE: Required (numbers only)`
+* `DEFAULT: 1`
+* `USABLE CATEGORIES: food`
+* `EXPLANATION: Saturation when eating the item`
+## `use_duration:'
+* `TYPE: Required (numbers only) `
+* `DEFAULT: 1`
+* `USED CATEGORIES: food`
+* `EXPLANATION: time to eat the item` 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 'dependencies:'
+* `TYPE: array of "target_folder: file`
+* `DEFAULT: undefined`
+* 'USABLE CATEGORIES: all`
+* `EXPLANATION: If any items need additional images or files in the texture, they should be placed here to be automatically added to the texture` 
