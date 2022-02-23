@@ -1,0 +1,8 @@
+textures_reloaded: "The texture has been loaded!"
+agive_usages: "§e/agive [player] [id|namespace] [count]\n§e/agive [player] [list] [root_path]\n§e/agive list"
+player_not_found: "Player not found!"
+given_list_items: "§aThe items §e'{list}' §aof the list §e'{rootPath}' §ahas been send to the player §e{target}"
+item_not_found: "§eItem '{item}' not found!"
+item_send_successfully: "§aItem §e{item}§ax§e{count}§a send to §e'{target}'!"
+load_item_error: "§eError to load item §6'{item}'§e in path §c'{path}'§e!"
+loaded_items_info: "§eLoaded §6{loaded} §eitems and §6{errors} §e with errors not loaded!"

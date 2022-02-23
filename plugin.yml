@@ -1,0 +1,19 @@
+name: PMAddons
+api: 4.0.0
+version: 1.0.6
+main: oheydeniis\pma\Main
+author: oHeyDeniis
+commands:
+  agive:
+    description: "Pegar itens dos addons"
+    permission: agive.use
+  areload:
+    description: "Recarregar textura"
+    permission: areload.use
+permissions:
+  agive.use:
+    default: true
+    description: a
+  areload.use:
+    default: true
+    description: a

@@ -1,0 +1,29 @@
+textures_reloaded: "A textura foi recarregada!"
+agive_usages: "§e/agive [jogador] [id|namespace] [count]\n§e/agive [jogador] [list] [root_path]\n§e/agive list"
+player_not_found: "Jogador não encontrado!"
+given_list_items: "§aOs itens §e'{list}' §ada lista §e'{rootPath}' §aforam enviados ao jogador §e{target}"
+item_not_found: "§eItem '{item}' não encontrado!"
+item_send_successfully: "§aItem §e{item}§ax§e{count} §aenviado a §e'{target}'!"
+load_item_error: "§eNão foi possivel carregar o item §6'{item}'§e na pasta §c'{path}'§e!"
+loaded_items_info: "§eCarregado §6{loaded} §eitems e §6{errors} §enão puderam ser careegadas!"
+invalid_entity_id: "Id da entidade {player} nao foi encontrado!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
