@@ -3,6 +3,8 @@
 namespace oheydeniis\pma\items;
 
 
+use muqsit\pmarmorstand\behaviour\ArmorPieceArmorStandBehaviour;
+use muqsit\pmarmorstand\Loader;
 use oheydeniis\pma\items\interactor\ItemInteractor;
 use oheydeniis\pma\items\item\AddonItem;
 use oheydeniis\pma\items\item\Armor;
@@ -40,9 +42,14 @@ class ItemLoader extends BaseLoader
     private ItemInteractor $itemInteractor;
     private Main $main;
 
+    private ?Loader $armorStand = null;
+
     public function __construct(Main $main)
     {
         $this->main = $main;
+        if(($pl = $main->getServer()->getPluginManager()->getPlugin("PMArmorStand")) instanceof Loader){
+            $this->armorStand = $pl;
+        }
         $this->path = $main->getDataFolder()."Items/";
         parent::__construct($main);
         $this->getPocketmineManager();
@@ -114,6 +121,10 @@ class ItemLoader extends BaseLoader
             }
         }
         $this->loadRecipes();
+        if($this->armorStand)
+            $this->loadArmorStands();
+        else
+            Translator::sendLogger("armor_stand_not_found");
         Translator::sendLogger("loaded_items_info", [
             "{loaded}" => $loaded,
             "{errors}" => $err
@@ -130,6 +141,19 @@ class ItemLoader extends BaseLoader
 
             }
         }
+    }
+    public function loadArmorStands() : void{
+        $i = 0;
+        foreach ($this->getItemEntryList() as $itemEntry){
+            $item = $itemEntry->getItem();
+            if($item instanceof Armor){
+                $this->armorStand->getBehaviourRegistry()->register($item, new ArmorPieceArmorStandBehaviour($item->getArmorSlot()));
+                $i++;
+            }
+        }
+        Translator::sendLogger("armor_stands_loaded", [
+            "{count}" => $i
+        ]);
     }
     public function convertItems() : void{
         $list = [];

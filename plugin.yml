@@ -1,8 +1,10 @@
 name: PMAddons
 api: 4.0.0
-version: 1.0.6
+version: 1.0.8
 main: oheydeniis\pma\Main
 author: oHeyDeniis
+softdepend:
+  - PMArmorStand
 commands:
   agive:
     description: "Pegar itens dos addons"

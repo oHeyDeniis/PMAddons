@@ -18,6 +18,7 @@ class EventListener implements Listener
 
     public function onPlayerJoin(PlayerJoinEvent $event) : void{
         $player = $event->getPlayer();
+		$player->sendMessage("\u{E106}§a\u{E107} oHeyDeniis > sla garai");
         $player->getNetworkSession()->sendDataPacket($this->main->getLoaderManager()->getItemLoader()->getPmManager()->getComponentPacket());
     }
     /**

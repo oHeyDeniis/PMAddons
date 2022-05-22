@@ -41,16 +41,71 @@ class TextureManager
         $this->uuidList = $this->uuidListValue->getValue($this->resourcePackManager);
         $this->entriesManager = new EntriesManager($main, $this);
     }
-    public function build(){
+    /*
+    [12:51, 20/05/2022] Raidoxx [KRIPTO]: "binding_type":"view",
+"target_property_name":"#visible"
+[12:52, 20/05/2022] Raidoxx [KRIPTO]: "exemplo_form":{
+ "$exemplo":"TESTE",
+  "controls":[{
+    "long_form@long_form":{
+      "enabled":false,
+      "visible":false,
+      "bindings":[{
+        "source_property_name":"((#title_text - $exemplo) = #title_text))",
+        "binding_type":"view",
+        "target_property_name":"#visible"
+      }]
+    }
+  }]
+}
+[12:55, 20/05/2022] Raidoxx [KRIPTO]: "exemplo_painel@(sua_namespace).exemplo_painel":{
+    "enabled":false,
+    "visible":false,
+    "bindings":[
+       {
+          "binding_type":"global",
+          "binding_condition":"none",
+          "binding_name":"#title_text",
+          "binding_name_override":"#title_text"
+       },
+       {
+          "source_property_name":"(not ((#title_text - $exemplo) = #title_text))",
+          "binding_type":"view",
+          "target_property_name":"#visible"
+       },
+       {
+          "source_property_name":"(not ((#title_text - $exemplo) = #title_text))",
+          "binding_type":"view",
+          "target_property_name":"#enabled"
+       }
+    ]
+ }
+    */
+    public function build(bool $delete = true){
+        if($delete){
+            if (is_file($this->resourceZip)){
+                $this->info("deleting actual zip...");
+                @unlink($this->resourceZip);
+            }
+        }
+        $this->info("rebuilding zip entries!");
         $this->entriesManager->build();
+        $this->info("Building ZIP archive!");
         $this->buildZip();
+        $this->info("Apply texture in server");
         $this->reloadTextures();
+        $this->info("texture update finished!");
     }
     public function buildZip(){
 
         $rootPath = realpath($this->resourcePath);
         $zip = new \ZipArchive();
-        $zip->open($this->resourceZip, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+        if(($code = $zip->open($this->resourceZip, \ZipArchive::CREATE|\ZipArchive::OVERWRITE|\ZipArchive::CHECKCONS|\ZipArchive::EXCL)) !== TRUE){
+            $this->info("§cError while creating new ZIP code: $code (tryagain)");
+
+            return;
+        }
 
         /** @var SplFileInfo[] $files */
         $files = new RecursiveIteratorIterator(
@@ -85,6 +140,9 @@ class TextureManager
         }
         $this->resourcePacksValue->setValue($this->resourcePackManager, $resourcePacks);
         $this->uuidListValue->setValue($this->resourcePackManager, $uuidList);
+    }
+    public function info(string $messgae) : void{
+        $this->getMain()->getServer()->getLogger()->info("§eTEXTURE > §6$messgae");
     }
     /**
      * @return string

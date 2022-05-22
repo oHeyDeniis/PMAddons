@@ -1,0 +1,88 @@
+enderite_sword:
+  name: "Espada de enderite"
+  id: 900
+  meta: 0
+  namespace: "alone:enderite_sword"
+  texture: "enderite_sword"
+  category: sword
+  attack_damage: 12
+  hand_equipped: true
+  max_durability: 700
+  craft:
+    recipe:
+      - "0|0|0"
+      - "0|0|0"
+      - "0|0|0"
+    result_count: 1
+enderite_pickaxe:
+  name: "Picareta de enderite"
+  id: 901
+  meta: 0
+  namespace: "alone:enderite_pickaxe"
+  texture: enderite_pickaxe
+  category: tool
+  tool_name: pickaxe
+  mining_speed: 10
+  hand_equipped: true
+enderite_axe:
+  name: "Machado de enderite"
+  id: 902
+  meta: 0
+  namespace: "alone:enderite_axe"
+  texture: enderite_axe
+  category: tool
+  tool_name: axe
+  mining_speed: 10
+  hand_equipped: true
+enderite_helmet:
+  name: "Capacete de enderite"
+  id: 903
+  meta: 0
+  namespace: "alone:enderite_helmet"
+  texture: enderite_helmet
+  category: armor
+  armor_slot: helmet
+  defender_points: 3
+  max_durability: 564
+  protection: 3
+enderite_chestplate:
+  name: "Peitoral de enderite"
+  id: 904
+  meta: 0
+  namespace: "alone:enderite_chestplate"
+  texture: enderite_chestplate
+  category: armor
+  armor_slot: chestplate
+  defender_points: 7
+  max_durability: 880
+  protection: 6
+enderite_leggings:
+  name: "Calça de enderite"
+  id: 905
+  meta: 0
+  namespace: "alone:enderite_leggings"
+  texture: enderite_leggings
+  category: armor
+  armor_slot: leggings
+  defender_points: 6
+  max_durability: 610
+  protection: 6
+enderite_boots:
+  name: "Bota de enderite"
+  id: 906
+  meta: 0
+  namespace: "alone:enderite_boots"
+  texture: enderite_boots
+  category: armor
+  armor_slot: boots
+  defender_points: 4
+  max_durability: 570
+  protection: 4
+enderite_ingot:
+  name: "Enderite"
+  id: 907
+  meta: 0
+  namespace: "alone:enderite_ingot"
+  texture: enderite_ingot
+  category: normal
+

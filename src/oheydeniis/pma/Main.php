@@ -2,6 +2,9 @@
 
 namespace oheydeniis\pma;
 
+use jojoe77777\FormAPI\SimpleForm;
+use muqsit2\invmenu\InvMenu;
+use muqsit2\invmenu\InvMenuEventHandler;
 use oheydeniis\pma\manager\LoaderManager;
 use oheydeniis\pma\manager\TextureManager;
 use oheydeniis\pma\manager\Translator;
@@ -55,6 +58,8 @@ class Main extends PluginBase implements Listener
     {
         if ($command->getName() == "areload" and $sender->hasPermission("areload.use")) {
             $this->textureManager->build();
+            foreach ($sender->getServer()->getOnlinePlayers() as $sender2)
+                $sender2->transfer("127.0.0.1", 19132);
             Translator::send($sender, "textures_reloaded");
         }
         if ($command->getName() == "agive" and $sender->hasPermission("agive.use")) {
@@ -63,6 +68,13 @@ class Main extends PluginBase implements Listener
                 return false;
             }
             switch (strtolower($args[0])) {
+                case "test":
+                    $form = new SimpleForm(null);
+                    $form->setTitle("@teste teste");
+                    $form->addButton("a");
+                    $form->sendToPlayer($sender);
+
+                    break;
                 case "list":
                     foreach ($this->getLoaderManager()->getItemLoader()->getItemsRootPath() as $rootPath){
                         $sender->sendMessage("§e$rootPath: ");

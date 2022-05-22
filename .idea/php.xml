@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/../PMArmorStand-master" />
+      <path value="$PROJECT_DIR$/../../../PocketMine-MP" />
+      <path value="$PROJECT_DIR$/../Tree_v0.13-A/src/muqsit" />
+      <path value="$PROJECT_DIR$/../Shop" />
+      <path value="$PROJECT_DIR$/../xFactions/src/jojoe77777" />
+    </include_path>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>

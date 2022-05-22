@@ -12,10 +12,34 @@ class ManifestEntry
     private EntriesManager $entriesManager;
     private string $file;
 
+    private Config $config;
+
     public function __construct(EntriesManager $entriesManager)
     {
         $this->entriesManager = $entriesManager;
         $this->file = $entriesManager->getTextureManager()->getResourcePath()."manifest.json";
+        $this->config = new Config($this->file, Config::JSON, []);
+        if(count($this->config->getAll()) == 0){
+            echo "replacing default texture manifest!\n";
+            $this->config->setAll([
+                "format_version" => 2,
+                "header" => [
+                    "name" => "PMAddons2",
+                    "description" => "allow addons in your pocketmine server",
+                    "uuid" => UUID::fromRandom()->toString(),
+                    "version" => [0, 0, 1],
+                    "min_engine_version" => [1, 17, 0]
+                ],
+                "modules" => [
+                    [
+                        "description" => "allow addons in your pocketmine server",
+                        "type" => "resources",
+                        "uuid" => UUID::fromRandom()->toString(),
+                        "version" => [0, 0, 1]
+                    ]
+                ]
+            ]);
+        }
     }
     public function build(array $newVersion = null){
         $header = $this->getHeader();
@@ -24,6 +48,7 @@ class ManifestEntry
         }else{
             $header["version"] = $newVersion;
         }
+        $header["test"] = "a";
         $this->setHeader($header);
         $modules = $this->getModules();
         foreach ($modules as $index => $data){
@@ -67,23 +92,6 @@ class ManifestEntry
         $this->getConfig()->save();
     }
     public function getConfig() : Config{
-        return new Config($this->file, Config::JSON, [
-            "format_version" => 2,
-            "header" => [
-                "name" => "PMAddons",
-                "description" => "allow addons in your pocketmine server",
-                "uuid" => UUID::fromRandom()->toString(),
-                "version" => [0, 0, 1],
-                "min_engine_version" => [1, 17, 0]
-            ],
-            "modules" => [
-                [
-                    "description" => "allow addons in your pocketmine server",
-                    "type" => "resources",
-                    "uuid" => UUID::fromRandom()->toString(),
-                    "version" => [0, 0, 1]
-                ]
-            ]
-        ]);
+        return $this->config;
     }
 }
